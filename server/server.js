@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'shapna0327.',
+  password: 'jimsha',
   database: 'ecampus'
 });
 
@@ -31,7 +31,7 @@ app.post('/api/login', (req, res) => {
     return res.status(400).send({ message: 'Roll number and password are required' });
   }
 
-  const query = `SELECT * FROM students WHERE rollno = ? AND password = ?`;
+  const query = 'SELECT * FROM `student login details` WHERE rollno = ? AND password = ?';
 
   connection.query(query, [rollno, password], (err, results) => {
     if (err) {
