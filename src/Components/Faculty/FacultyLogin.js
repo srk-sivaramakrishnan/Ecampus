@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import baseURL from '../auth/connection'; // Ensure the correct path
+import baseURL from '../../auth/connection'; // Ensure the correct path
+import '../../Components/Faculty/FacultyLogin.css';
 
-const Login = () => {
-  const [rollno, setRollno] = useState('');
+function FacultyLogin() {
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
 
-    axios.post(`${baseURL}/api/login`, { rollno, password })
+    axios.post(`${baseURL}/api/faculty-login`, { username, password })
       .then(response => {
         console.log(response.data);
-        navigate('/student-dashboard');
+        navigate('/faculty-dashboard');
       })
       .catch(error => {
         console.error('There was an error logging in!', error);
@@ -22,15 +23,15 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
+    <div className="container">
+      <h1>Faculty Login</h1>
       <form onSubmit={handleLogin}>
         <div>
-          <label>Roll No:</label>
+          <label>Username:</label>
           <input
             type="text"
-            value={rollno}
-            onChange={(e) => setRollno(e.target.value)}
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             required
           />
         </div>
@@ -45,8 +46,11 @@ const Login = () => {
         </div>
         <button type="submit">Login</button>
       </form>
+      <div className="forgot-password">
+        <a href="/forgot-password">Forgot Password?</a>
+      </div>
     </div>
   );
-};
+}
 
-export default Login;
+export default FacultyLogin;
