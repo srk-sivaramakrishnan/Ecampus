@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './Components/Home';
 import Users from './Components/Users';
-import UploadCSV from './Components/Admin/UploadCSV';
+import UploadCSV from './Components/Admin/uploadCSV';
 import StudentLogin from './Components/Student/StudentLogin';
 import FacultyLogin from './Components/Faculty/FacultyLogin';
 import StudentDashboard from './Components/Student/StudentDashboard';
